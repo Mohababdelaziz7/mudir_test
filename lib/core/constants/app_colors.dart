@@ -20,6 +20,7 @@ class AppColors {
   // Status & Feedback Colors
   static const Color errorBackground = Color(0xFFFFF2F2);
   static const Color errorBorder = Color(0xFFFFD4D4);
+  static const Color planBackground = Color(0xFFFCEAC8);
 
   // Overlay Gradients
   static const Color imageOverlayTop = Color(0x05131314);

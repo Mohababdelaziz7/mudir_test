@@ -32,6 +32,9 @@ class AppAssets {
   static const String robot = 'assets/robot.svg';
   static const String report = 'assets/report.svg';
   static const String sign = 'assets/sign.svg';
+  static const String calculator = 'assets/calculator.svg';
+  static const String chart = 'assets/chart-column-decreasing.svg';
+  static const String agreement = 'assets/agreement-02.svg';
 
   // Category Icons
   static const String catApartment = 'assets/navicons/ell1.png';

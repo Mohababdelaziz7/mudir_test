@@ -315,11 +315,13 @@ class AuctionCard extends StatelessWidget {
 class AuctionProductList extends StatelessWidget {
   final List<Property> auctions;
   final ValueChanged<Property>? onAuctionTap;
+  final VoidCallback? onAddAuctionTap;
 
   const AuctionProductList({
     super.key,
     required this.auctions,
     this.onAuctionTap,
+    this.onAddAuctionTap,
   });
 
   @override
@@ -335,13 +337,19 @@ class AuctionProductList extends StatelessWidget {
           height: 285,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: auctions.length,
+            itemCount: auctions.length + 1,
             itemBuilder: (context, index) {
+              if (index == auctions.length) {
+                return Padding(
+                  padding: const EdgeInsets.only(left: 14.0, right: 10.0),
+                  child: _buildBlueBannerCard(context),
+                );
+              }
               final item = auctions[index];
               return Padding(
                 padding: EdgeInsets.only(
                   right: index == 0 ? 14.0 : 10.0,
-                  left: index == auctions.length - 1 ? 14.0 : 0.0,
+                  left: 0.0,
                 ),
                 child: AuctionCard(
                   property: item,
@@ -352,6 +360,94 @@ class AuctionProductList extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  // Add Auction Card
+  Widget _buildBlueBannerCard(BuildContext context) {
+    return Container(
+      width: 190,
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Color(0xFF143566),
+            Color(0xFF1E4C8C).withValues(alpha: 0.9),
+            Color(0xFF1E4C8C).withValues(alpha: 0.9),
+            Color(0xFF1E4C8C).withValues(alpha: 0.8),
+          ],
+        ),
+        borderRadius: BorderRadius.circular(24),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.03),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: InkWell(
+        onTap: onAddAuctionTap,
+        borderRadius: BorderRadius.circular(24),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              width: 54,
+              height: 54,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                shape: BoxShape.circle,
+              ),
+              alignment: Alignment.center,
+              child: SvgPicture.asset(
+                AppAssets.navAuctions,
+                width: 36,
+                height: 36,
+                fit: BoxFit.contain,
+                colorFilter: const ColorFilter.mode(
+                  AppColors.primary,
+                  BlendMode.srcIn,
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 12),
+
+            Text(
+              'عنده عقار؟\nاعرضه في مزاد',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.ibmPlexSansArabic(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.w700,
+                height: 1.3,
+              ),
+            ),
+
+            const Spacer(),
+
+            // السهم والكلمة في الأسفل
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'ابدأ الطلب',
+                  style: GoogleFonts.ibmPlexSansArabic(
+                    color: Colors.white,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const Icon(Icons.arrow_forward, color: Colors.white, size: 20),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

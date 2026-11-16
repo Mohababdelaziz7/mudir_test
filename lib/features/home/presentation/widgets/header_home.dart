@@ -36,21 +36,31 @@ class HeaderHome extends StatelessWidget {
                       color: AppColors.txt1,
                     ),
                   ),
-                  Row(
-                    children: [
-                      Text(
-                        state.userLocation,
-                        style: GoogleFonts.ibmPlexSansArabic(
-                          color: AppColors.txt2,
-                          fontSize: 12,
+                  Container(
+                    height: 20,
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    decoration: ShapeDecoration(
+                      color: AppColors.planBackground,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(13),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      spacing: 5,
+                      children: [
+                        Text(
+                          state.userStatus,
+                          style: GoogleFonts.ibmPlexSansArabic(
+                            color: AppColors.goldDark,
+                            fontSize: 10,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
-                      ),
-                      const Icon(
-                        Icons.keyboard_arrow_down,
-                        size: 16,
-                        color: Colors.grey,
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ],
               ),

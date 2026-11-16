@@ -2,10 +2,15 @@ import '../../../../core/constants/app_assets.dart';
 import '../models/banner_model.dart';
 import '../models/location_model.dart';
 import '../models/service_model.dart';
+import '../models/tools_model.dart';
 
 abstract class HomeLocalDataSource {
   Future<List<BannerModel>> getBanners();
+
   Future<List<ServiceModel>> getServices();
+
+  Future<List<ToolsModel>> getTools();
+
   Future<List<LocationModel>> getBestLocations();
 }
 
@@ -62,6 +67,77 @@ class HomeLocalDataSourceImpl implements HomeLocalDataSource {
         subtitle: 'جاهز للتوقيع',
         isNew: false,
         actionType: 'signature',
+      ),
+      ServiceModel(
+        id: '4',
+        image: AppAssets.navAds,
+        title: 'تسويق عقاري',
+        subtitle: 'سوق عقارك',
+        isNew: false,
+        actionType: 'marketing',
+      ),
+      ServiceModel(
+        id: '5',
+        image: AppAssets.report,
+        title: 'تشغيل للغير',
+        subtitle: 'اداره وتأجير',
+        isNew: false,
+        actionType: 'management',
+      ),
+      ServiceModel(
+        id: '6',
+        image: AppAssets.sign,
+        title: 'ادارة شاملة',
+        subtitle: 'ادارة الأملاك',
+        isNew: false,
+        actionType: 'management_full',
+      ),
+      ServiceModel(
+        id: '7',
+        image: AppAssets.report,
+        title: 'طلب شراء',
+        subtitle: 'ابحث عن عقارك',
+        isNew: false,
+        actionType: 'purchase',
+      ),
+    ];
+  }
+
+  @override
+  Future<List<ToolsModel>> getTools() async {
+    return const [
+      ToolsModel(
+        id: '1',
+        image: AppAssets.calculator,
+        title: 'حاسبة التمويل',
+        subtitle: 'القسط الشهري',
+        isNew: false,
+        actionType: 'calculator',
+      ),
+      ToolsModel(
+        id: '2',
+        image: AppAssets.chart,
+        title: 'العائد الايجاري',
+        subtitle: 'العائد السنوي',
+        isNew: false,
+        actionType: 'return',
+      ),
+      ToolsModel(
+        id: '3',
+        image: AppAssets.agreement,
+        title: 'ايجار VS تملك',
+        subtitle: 'الايجار والشراء',
+        isNew: false,
+        actionType: 'rent_vs_buy',
+      ),
+
+      ToolsModel(
+        id: '4',
+        image: AppAssets.calculator,
+        title: 'المقدم والاقساط',
+        subtitle: 'المقدم والمتبقي',
+        isNew: false,
+        actionType: 'downpayment',
       ),
     ];
   }

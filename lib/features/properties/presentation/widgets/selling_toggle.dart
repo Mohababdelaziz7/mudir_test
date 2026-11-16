@@ -17,7 +17,7 @@ class SellingToggle extends StatelessWidget {
         final isSelling = state.isForSale;
 
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+          padding: const EdgeInsets.fromLTRB(16, 25, 16, 10),
           child: Row(
             children: [
               GestureDetector(

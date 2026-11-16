@@ -13,7 +13,7 @@ class HeaderStatusCubit extends Cubit<HeaderStatusState> {
     emit(state.copyWith(hasUnreadMessage: !state.hasUnreadMessage));
   }
 
-  void updateLocation(String newLocation) {
-    emit(state.copyWith(userLocation: newLocation));
+  void updateLocation(String newStatus) {
+    emit(state.copyWith(userStatus: newStatus));
   }
 }

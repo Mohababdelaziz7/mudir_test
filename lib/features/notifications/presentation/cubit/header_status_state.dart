@@ -4,27 +4,27 @@ class HeaderStatusState extends Equatable {
   final bool hasUnreadNotification;
   final bool hasUnreadMessage;
   final String userName;
-  final String userLocation;
+  final String userStatus;
 
   const HeaderStatusState({
     this.hasUnreadNotification = true,
     this.hasUnreadMessage = false,
     this.userName = 'مهاب',
-    this.userLocation = 'المنصورة',
+    this.userStatus = 'مجاني',
   });
 
   HeaderStatusState copyWith({
     bool? hasUnreadNotification,
     bool? hasUnreadMessage,
     String? userName,
-    String? userLocation,
+    String? userStatus,
   }) {
     return HeaderStatusState(
       hasUnreadNotification:
           hasUnreadNotification ?? this.hasUnreadNotification,
       hasUnreadMessage: hasUnreadMessage ?? this.hasUnreadMessage,
       userName: userName ?? this.userName,
-      userLocation: userLocation ?? this.userLocation,
+      userStatus: userStatus ?? this.userStatus,
     );
   }
 
@@ -33,6 +33,6 @@ class HeaderStatusState extends Equatable {
     hasUnreadNotification,
     hasUnreadMessage,
     userName,
-    userLocation,
+    userStatus,
   ];
 }

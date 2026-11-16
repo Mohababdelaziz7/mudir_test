@@ -22,6 +22,7 @@ import '../widgets/floating_btn.dart';
 import '../widgets/header_home.dart';
 import '../widgets/search_filter.dart';
 import '../widgets/services_card.dart';
+import '../widgets/tools_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -78,8 +79,19 @@ class HomeScreen extends StatelessWidget {
                   ),
 
                   // Real Estate Services
-                  const SliverToBoxAdapter(
-                    child: CardHeader(title: "خدمات عقارية"),
+                  SliverToBoxAdapter(
+                    child: CardHeader(
+                      title: "خدمات عقارية",
+                      actionText: "عرض الكل",
+                      onActionTap: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('عرض جميع الخدمات العقارية'),
+                            duration: Duration(seconds: 1),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                   SliverToBoxAdapter(
                     child: ServicesCard(
@@ -108,6 +120,97 @@ class HomeScreen extends StatelessWidget {
                               const SnackBar(
                                 content: Text(
                                   'إنشاء عقد إيجار موثق وجاهز للتوقيع',
+                                ),
+                                duration: Duration(seconds: 1),
+                              ),
+                            );
+                            break;
+                          case 'marketing':
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('سوق عقارك الان'),
+                                duration: Duration(seconds: 1),
+                              ),
+                            );
+                            break;
+                          case 'management':
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('ادارة وتأجير العقارات'),
+                                duration: Duration(seconds: 1),
+                              ),
+                            );
+                            break;
+                          case 'management_full':
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('ادراة شاملة لأملاكك'),
+                                duration: Duration(seconds: 1),
+                              ),
+                            );
+                            break;
+                          case 'purchase':
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('ابحث عن العقار المناسب ليك'),
+                                duration: Duration(seconds: 1),
+                              ),
+                            );
+                            break;
+                        }
+                      },
+                    ),
+                  ),
+
+                  // Real Estate Tools
+                  SliverToBoxAdapter(
+                    child: CardHeader(
+                      title: "أدواتك العقارية",
+                      actionText: "عرض الكل",
+                      newCategory: true,
+                      onActionTap: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('عرض جميع أدواتك العقارية'),
+                            duration: Duration(seconds: 1),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  SliverToBoxAdapter(
+                    child: ToolsCard(
+                      onToolsSelected: (actionType) {
+                        switch (actionType) {
+                          case 'calculator':
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('خدمة حاسبةالقسط الشهري للتمويل'),
+                                duration: Duration(seconds: 1),
+                              ),
+                            );
+                            break;
+                          case 'return':
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('حساب العائد السنوي الايجاري'),
+                                duration: Duration(seconds: 1),
+                              ),
+                            );
+                            break;
+                          case 'rent_vs_buy':
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('خدمات الايجار والشراء'),
+                                duration: Duration(seconds: 1),
+                              ),
+                            );
+                            break;
+                          case 'downpayment':
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text(
+                                  'مراجعة المقدم والأقساط المتبقية',
                                 ),
                                 duration: Duration(seconds: 1),
                               ),

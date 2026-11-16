@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../../core/constants/app_colors.dart';
 import '../../domain/entities/service_item.dart';
 import '../cubit/home_cubit.dart';
 import '../cubit/home_state.dart';
@@ -23,22 +24,17 @@ class ServicesCard extends StatelessWidget {
 
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Column(
-            children: [
-              const SizedBox(height: 5),
-              IntrinsicHeight(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    for (int i = 0; i < services.length; i++) ...[
-                      if (i > 0) const SizedBox(width: 10),
-                      Expanded(child: _buildServiceItem(context, services[i])),
-                    ],
-                  ],
-                ),
+          child: SizedBox(
+            height: 120,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemCount: services.length,
+              separatorBuilder: (context, index) => const SizedBox(width: 6),
+              itemBuilder: (context, index) => SizedBox(
+                width: 110,
+                child: _buildServiceItem(context, services[index]),
               ),
-              const SizedBox(height: 20),
-            ],
+            ),
           ),
         );
       },
@@ -56,7 +52,7 @@ class ServicesCard extends StatelessWidget {
         },
         borderRadius: BorderRadius.circular(20),
         child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+          padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 6),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             border: Border.all(color: const Color(0xFFF0F2F7)),
@@ -129,7 +125,7 @@ class ServicesCard extends StatelessWidget {
                 ],
               ),
 
-              // بادج "جديد" أعلى اليمين كما في الصورة تماماً
+              // New Item Badge
               if (item.isNew)
                 Positioned(
                   right: 4,
@@ -140,13 +136,13 @@ class ServicesCard extends StatelessWidget {
                       vertical: 2,
                     ),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFEFA728),
+                      color: AppColors.gold,
                       borderRadius: BorderRadius.circular(6),
                     ),
                     child: Text(
                       'جديد',
                       style: GoogleFonts.ibmPlexSansArabic(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontSize: 10,
                         fontWeight: FontWeight.w700,
                       ),
